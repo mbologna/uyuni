@@ -15,6 +15,7 @@
 package com.redhat.rhn.domain.rhnpackage.test;
 
 import com.redhat.rhn.common.hibernate.HibernateFactory;
+import com.redhat.rhn.domain.rhnpackage.PackageType;
 import org.apache.commons.lang3.StringUtils;
 
 import com.redhat.rhn.common.db.WrappedSQLException;
@@ -82,7 +83,7 @@ public class PackageEvrComparableTest extends RhnBaseTestCase {
 
     private PackageEvr create(String evr) {
         String[] values = split(evr);
-        return PackageEvrFactory.lookupOrCreatePackageEvr(values[0], values[1], values[2]);
+        return PackageEvrFactory.lookupOrCreatePackageEvr(values[0], values[1], values[2], PackageType.RPM);
     }
 
     private String[] split(String evr) {
