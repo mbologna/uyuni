@@ -40,7 +40,7 @@ public class RpmVersionComparatorTest extends TestCase {
         // Some equality
         assertCompareSymm(0, "0", "0");
         assertCompareSymm(0, "1-a.1", "1-a.1");
-        assertCompareSymm(0, "1_a.1", "1.a_1");
+        assertCompareSymm(0, "1-a.1", "1.a-1");
         assertCompareSymm(0, "", "");
 
         // all not alphanum signs are treated as the same
@@ -110,7 +110,6 @@ public class RpmVersionComparatorTest extends TestCase {
         assertCompareSymm(-1, "7.module_el8.2.0+305+5e198a41", "7.module_el8.2.0+458+dab581ed");
         // some packages have "module+el8" in the release
         assertCompareSymm(-1, "10.module+el8.2.0+7749+4a513fb2", "10.module+el8.2.0+7749+5a513fb2");
-
         assertCompareSymm(-1, "6.module+el8+1645+8d4014a6", "7.module_el8.2.0+458+dab581ed");
     }
 
