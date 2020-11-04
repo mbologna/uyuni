@@ -209,8 +209,15 @@ public class PackageEvr implements Comparable<PackageEvr> {
     }
 
     private int debCompareTo(PackageEvr other) {
-        //TODO:
-        return 0;
+        int result = epochAsInteger().compareTo(other.epochAsInteger());
+        if (result != 0) {
+            return result;
+        }
+        if (getVersion() == null || other.getVersion() == null) {
+            throw new IllegalStateException(
+                    "To compare PackageEvr, both must have non-null versions");
+        }
+        return DEBVERCMP.compare(getVersion(), other.getVersion());
     }
 
     /**
